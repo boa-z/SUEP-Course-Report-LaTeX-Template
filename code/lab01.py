@@ -1,3 +1,6 @@
+'''
+lab01: 拴牛鼻的绳子
+'''
 import math
 
 def caculate(x):

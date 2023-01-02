@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{math201}
-[2023/01/01 v0.1 Standard LaTeX Template for Math201 LaTeX Report Template]
+[2023/01/01 v0.1 Standard LaTeX Template for Math201 Report]
 \LoadClass[UTF8,a4paper]{ctexart}
 \RequirePackage{xeCJK}
 \RequirePackage{CJKnumb}

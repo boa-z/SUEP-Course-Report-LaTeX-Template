@@ -24,16 +24,13 @@
 
 \subsection{题目分析与思路}
 
-
-\begin{figure}[htbp]  
+\begin{figure}[H]  
     \centering\includegraphics[width=0.3\linewidth]{01.png}  
     \caption{圆形牛栏示例}     
     \label{img01}   
 \end{figure}
     
-
 如图\ref*{img01}所示，设$A$为栓桩，绳$AB$长为$R$。半径$OA=OB=r=10$，$\angle OAB=\theta$，那么$R=2r\cos\theta$。
-
 
 由只让牛吃到一半的草，可得：
 \begin{equation}
@@ -41,7 +38,7 @@
 \end{equation}
 即
 \begin{equation}
-    S_{\overset{\Huge\frown}{BAC}} + 2\times(S_{\overset{\Huge\frown}{BOA}} - S_{\Delta BOA}) = \frac{1}{2}\pi r \\
+    S_{\overset{\frown}{BAC}} + 2\times(S_{\overset{\frown}{BOA}} - S_{\Delta BOA}) = \frac{1}{2}\pi r \\
     \frac{2\theta}{2\pi}
     \nonumber
 \end{equation}
@@ -56,7 +53,7 @@
 \end{equation}
 从而得到关系式
 \begin{equation}
-    2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4} - \theta = 0
+    2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4} - \theta = 0 \label{equation:1}
 \end{equation}
 或
 \begin{equation}
@@ -70,7 +67,7 @@
 
 设方程$f(\theta)=2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4} - \theta = 0$的不动点迭代格式为
 \begin{equation}
-    \theta_{k+1}=\phi(\theta_k)=2\theta_k\cos^2\theta_k+\frac{\pi}{2}-\cos\theta_k\sin\theta_k-\frac{\pi}{4} \quad (k=0,1,2,...)
+    \theta_{k+1}=\phi(\theta_k)=2\theta_k\cos^2\theta_k+\frac{\pi}{2}-\cos\theta_k\sin\theta_k-\frac{\pi}{4} \quad (k=0,1,2,\cdots)
 \end{equation}
 
 采用Python编写程序，取$\theta_0=0$，当迭代满足$|\theta_{k+1}-\theta_k|<0.00001$时，$\theta_{k+1}$为根的数值解，带入$R=2r\cos\theta$，得到$R$的值。
@@ -86,7 +83,7 @@
 
 \subsection{结果分析}
 
-方程(1.2)的根为$\theta=0.9529$，绳长为$R=11.5872$。所以农夫在长满草的半径10米的圆形牛栏，将一头牛栓在栏桩上，但只让牛吃到一半草，栓牛鼻的绳长应为11.5872米。
+方程\eqref{equation:1}的根为$\theta=0.9529$，绳长为$R=11.5872$。所以农夫在长满草的半径10米的圆形牛栏，将一头牛栓在栏桩上，但只让牛吃到一半草，栓牛鼻的绳长应为11.5872米。
 
 \section{机床加工零件的外形}
 
@@ -109,7 +106,6 @@
     S_i(x)=y_{i-1}\frac{x-x_i}{x_{i-1}-x_i}+y_i\frac{x-x_{i-1}}{x_i-x_{i-1}}
 \end{equation}
 
-
 事实上，分段线性插值函数是在两个节点构成的区间上实行$n-1$的拉格朗日插值得到的线性函数。用拉格朗日插值和分段线性插值计算所需的数据，并利用Python编写程序，分别得到坐标$x$每改变0.1时的对应$y$坐标，画出曲线，进行分析。
 \subsection{Python代码}
 \inputminted[
@@ -123,7 +119,7 @@
 \subsection{结果分析}
 采用分段线性插值计算所得结果如图\ref*{img02}所示，其中图像经过一定的后处理。从图中可以看出分段线性插值结果与原始数据吻合较好。
 
-\begin{figure}[htbp]  
+\begin{figure}[H]  
     \centering\includegraphics[width=0.8\linewidth]{02.png}  
     \caption{分段线性插值结果与原始数据的比较}     
     \label{img02}   
@@ -133,14 +129,12 @@
 % Part 3  读后感
 % =============================================
 \section{必读材料读后感}
-
 Todo: 请于课程最后一次提交报告之前在此处填写不少于500字的读后感
 
 % =============================================
 % Part 4 课程建议
 % =============================================
 \section{课程建议}
-
 Todo: 请给出课程建议
 
 \end{document}
