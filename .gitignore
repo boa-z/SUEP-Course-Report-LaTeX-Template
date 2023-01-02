@@ -278,3 +278,5 @@ TSWLatexianTemp*
 
 # MacOS director file
 *.DS_Store
+
+_minted-main/

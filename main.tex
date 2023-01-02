@@ -1,149 +1,146 @@
 \documentclass{math201}
 % =============================================
-% Part 0 Edit the info
+% Part 0 信息
 % =============================================
 
-\major{生物工程}
-\name{饭饭}
-\title{本科实验报告}
-\stuid{2182333333}
-\college{生命学院}
-\date{\zhtoday}
-\lab{寝室}
-\course{数字信号处理}
-\instructor{Hao}
-\grades{59}
-\expname{系统传输函数零极点分析}
-\exptype{设计实验}
-\partner{Bob}
+\major{信息与计算科学专业2020级}
+\name{张三}
+\stuid{2019***1}
+\college{数理学院数学系}
+\date{\today}
 
 \begin{document}
 % =============================================
-% Part 1 Header
+% Part 1  封面
 % =============================================
 \makecover
 
 % =============================================
-% Part 2 Main document
+% Part 2 主文档
 % =============================================
 
-\section{实验目的和要求}
-系统差分方程和传输函数是线性系统的重要概念，通过分析系统差分方程和传输函数的特性，编程查看系统零极点分布，加深对线性系统的了解。
-\section{实验内容和步骤}
+\section{拴牛鼻的绳子}
+农夫有一个长满草的半径为10米的圆形牛栏，他要将一头牛栓在栏桩上，但只让牛吃到一半草，问栓牛鼻的绳子应为多长？
 
-\subsection{实验内容}
+\subsection{题目分析与思路}
 
-给出如下差分方程：
-$$y(n) - (0.5+a)\times y(n-1) + 0.5ay(n-2) = x(n)$$
-%% 这里也可以使用 `subsubsection`
-\begin{enumerate}
-    \item 求解系统传输函数表达式。
-    \item 当 $a$ 取 $0.8, 0.9, 1.0, 1.1$时，画出零极点分布图。
-          \label{item:val}
-    \item 根据 \ref{item:val} 中 $a$ 的取值，分别画出幅频响应函数图像。
-\end{enumerate}
 
-\subsection{实验步骤}
-\begin{enumerate}
-    \item 编写程序，求解零极点
-    \item 画出图形。
-    \item 观察结果。
-\end{enumerate}
+\begin{figure}[htbp]  
+    \centering\includegraphics[width=0.3\linewidth]{01.png}  
+    \caption{圆形牛栏示例}     
+    \label{img01}   
+\end{figure}
+    
 
-\section{主要仪器设备}
-计算机，Matlab 软件
+如图\ref*{img01}所示，设$A$为栓桩，绳$AB$长为$R$。半径$OA=OB=r=10$，$\angle OAB=\theta$，那么$R=2r\cos\theta$。
 
-\section{操作方法和实验步骤}
-\subsection{传输函数}
-对差分方程进行处理，求出传输函数表达式。
-\subsection{零极点分布图}
-在此基础上，使用 Matlab 中的 \texttt{zplane} 函数进一步画出在不同 $a$ 取值情况下的零极点分布图。
-\subsection{幅频响应}
-之后使用 \texttt{freqz} 函数画出不同a取值情况下的频率响应图像。
 
-\section{实验数据记录和处理}
-\subsection{传输函数}
-根据差分方程，传输函数如下：
-$$H(z) = \frac{Y(z)}{X(z)} = \frac{z^2}{z^2-(0.5+a)z+0.5a}$$
-\subsection{零极点分布图}
-$a = 0.8, 0.9, 1.1$时，系统的零极点分布图及程序如下：
-\begin{enumerate}
-    \item 图像如图~\ref{fig:dist} 所示。
-          \begin{figure}[!htbp]
-              \centering
-              \includegraphics[width=0.6\linewidth]{01.jpg}
-              \caption{系统的零极点分布图}
-              \label{fig:dist}
-          \end{figure}
-    \item 代码
-          \lstinputlisting[language=MATLAB]{code/do.m}
-\end{enumerate}
+由只让牛吃到一半的草，可得：
+\begin{equation}
+    \mbox{扇形}BAC\mbox{面积} + 2\mbox{冠形}ADB\mbox{面积} = \frac{1}{2}\pi r^2
+\end{equation}
+即
+\begin{equation}
+    S_{\overset{\Huge\frown}{BAC}} + 2\times(S_{\overset{\Huge\frown}{BOA}} - S_{\Delta BOA}) = \frac{1}{2}\pi r \\
+    \frac{2\theta}{2\pi}
+    \nonumber
+\end{equation}
 
-\subsection{频率响应}
-$a = 0.8, 0.9, 1.0, 1.1$时，系统的频率响应函数图形及程序如下：
-\begin{enumerate}
-    \item 图像如图~\ref{fig:resp} 所示。
-          \begin{figure}[!htbp]
-              \centering
-              \includegraphics[width=0.6\linewidth]{02-1.jpg}
-              \caption{系统的频率响应函数图形}
-              \label{fig:resp}
-          \end{figure}
-    \item 代码
-          \lstinputlisting[language=MATLAB]{code/next.m}
-\end{enumerate}
+\begin{equation}
+    \begin{split}
+        \frac{2\theta}{2\pi}\pi R^2 + 2(\frac{\pi - 2\theta}{2\pi} - \frac{1}{2}Rr\sin\theta) = \frac{1}{2}\pi r^2 \\
+        \Rightarrow \theta R^2 + 2(\frac{\pi - 2\theta}{2\pi} - \frac{1}{2}Rr\sin\theta) = \frac{1}{2}\pi r^2 \\
+        \Rightarrow 4\theta\cos^2\theta + \pi - 2\theta - 2\cos\theta\sin\theta = \frac{1}{2}\pi
+    \end{split}
+    \nonumber
+\end{equation}
+从而得到关系式
+\begin{equation}
+    2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4} - \theta = 0
+\end{equation}
+或
+\begin{equation}
+    \theta = 2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4}
+\end{equation}
+于是问题求解转化为一个关于$\theta$的非线性方程。
 
-\section{实验结果与分析}
+求解这个方程的根$\theta$的值，进而由关系式$R=2r\cos\theta$得到绳长。
+\subsection{数值计算方法}
+这里，采用不动点迭代法求解方程的根。（注，也可以采用其他求根方法）
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet pharetra orci. Pellentesque ex est, ultricies non viverra sed, iaculis sed est. Suspendisse ex felis, aliquam et nulla in, vehicula gravida velit. In porttitor volutpat tincidunt. Aenean eleifend non augue sit amet ultrices. Proin rutrum odio vitae est luctus, eu facilisis leo dapibus. Aliquam commodo efficitur erat, sit amet pulvinar nulla ultrices ac. Vestibulum ullamcorper malesuada odio. Suspendisse id sollicitudin arcu. Nam fringilla commodo neque quis posuere. Sed lobortis justo nisl, ut molestie sapien semper ac. Proin in massa vel neque tempus porta id accumsan magna. Aliquam pharetra lacus ac arcu accumsan varius. Praesent condimentum mi vitae purus elementum imperdiet.
+设方程$f(\theta)=2\theta\cos^2\theta + \frac{\pi}{2} - \cos\theta\sin\theta - \frac{\pi}{4} - \theta = 0$的不动点迭代格式为
+\begin{equation}
+    \theta_{k+1}=\phi(\theta_k)=2\theta_k\cos^2\theta_k+\frac{\pi}{2}-\cos\theta_k\sin\theta_k-\frac{\pi}{4} \quad (k=0,1,2,...)
+\end{equation}
 
-Etiam in bibendum arcu. Etiam porta metus ligula. Cras tempor, leo vel faucibus consequat, diam justo malesuada ex, et pretium risus est sit amet lectus. In sit amet efficitur quam. Maecenas quis molestie odio, et consectetur augue. Mauris erat erat, tristique a nunc in, molestie molestie lectus. Nullam commodo ornare urna, vel tincidunt libero aliquam ut. Ut hendrerit nunc id sapien tristique mollis. Aenean maximus, neque molestie dignissim cursus, augue neque dictum purus, vitae varius diam ex vitae est. Nulla bibendum facilisis semper. Nulla placerat ultricies lorem, quis consequat metus pulvinar eu. Morbi sed massa arcu. Nulla sagittis felis a suscipit elementum.
+采用Python编写程序，取$\theta_0=0$，当迭代满足$|\theta_{k+1}-\theta_k|<0.00001$时，$\theta_{k+1}$为根的数值解，带入$R=2r\cos\theta$，得到$R$的值。
+\subsection{Python代码}
 
-\begin{table}[!htbp]
-    \begin{center}
-        \begin{tabular}{lllllllll}
-            \toprule
-            时间 & 双蒸水-1 & 双蒸水-2 & 双蒸水-3 & 待测样本-1 & 待测样本-2 & 待测样本-3 & 双蒸水 & 待测样本  \\
-            \midrule
-            20s  & 0.1628 & 0.1666 & 0.1617 & 1.3338 & 1.3826 & 1.3744 & 0.1637 & 1.3636  \\
-            80s  & 0.1630 & 0.1669 & 0.1619 & 1.3626 & 1.4130 & 1.4054 & 0.1639 & 1.3936 \\
-            $\Delta A$  &  &  &  &  &  &  & 0.0002 & 0.0300 \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-    \caption{吸光度数据}
-    \label{fig:dist}
-\end{table}
+\inputminted[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\small,
+    linenos
+]{python}{code/lab01.py}
 
-\section{code}
+\subsection{结果分析}
 
-\subsection{Python}
+方程(1.2)的根为$\theta=0.9529$，绳长为$R=11.5872$。所以农夫在长满草的半径10米的圆形牛栏，将一头牛栓在栏桩上，但只让牛吃到一半草，栓牛鼻的绳长应为11.5872米。
 
-\begin{lstlisting}[language=Python]
-    try:
-    input_arr = list(map(float, input("Please input the hetght(m) and weight(kg) number:").split()))
-    if min(input_arr) < 0:
-        raise Exception("The numbers should more than 0.")
-    if len(input_arr) != 2:
-        raise Exception("Should input 2 numbers")
-except ValueError:
-    print("The input is not number.")
-except Exception as e:
-    print(e)
-else:
-    BMI = input_arr[1] / input_arr[0]**2
+\section{机床加工零件的外形}
 
-    print("Your BMI is {0}".format(round(BMI, 1)))
+下表给出的$x, y$数据位于机翼断面的下轮廓线上，假设需要得到$x$坐标每改变0.1时$y$的坐标，试分段线性插值计算所需的数据，画出曲线，并分析结果。
 
-    if BMI <18.5:
-        print("Your body is Underweight.")
-    elif BMI<23.9:
-        print("Your body is Normal.")
-    elif BMI<27.9:
-        print("Your body is Overweight")
-    else:
-        print("Your body is Obesity.")
+\begin{center}
+    \begin{tabular}{ccccccccccc}
+        \toprule  %添加表格头部粗线
+        x & 0 & 3   & 5   & 7   & 9   & 11  & 19  & 13  & 14  & 15  \\ 
+        \midrule  %添加表格中横线
+        y & 0 & 1.2 & 1.7 & 2.0 & 2.1 & 2.0 & 1.8 & 1.2 & 1.0 & 1.6 \\ 
+        \bottomrule %添加表格底部粗线
+    \end{tabular}
+\end{center}
 
-\end{lstlisting}
+
+\subsection{数值计算方法}
+分段线性插值公式：
+\begin{equation}
+    S_i(x)=y_{i-1}\frac{x-x_i}{x_{i-1}-x_i}+y_i\frac{x-x_{i-1}}{x_i-x_{i-1}}
+\end{equation}
+
+
+事实上，分段线性插值函数是在两个节点构成的区间上实行$n-1$的拉格朗日插值得到的线性函数。用拉格朗日插值和分段线性插值计算所需的数据，并利用Python编写程序，分别得到坐标$x$每改变0.1时的对应$y$坐标，画出曲线，进行分析。
+\subsection{Python代码}
+\inputminted[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\small,
+    linenos
+]{python}{code/lab02.py}
+
+\subsection{结果分析}
+采用分段线性插值计算所得结果如图\ref*{img02}所示，其中图像经过一定的后处理。从图中可以看出分段线性插值结果与原始数据吻合较好。
+
+\begin{figure}[htbp]  
+    \centering\includegraphics[width=0.8\linewidth]{02.png}  
+    \caption{分段线性插值结果与原始数据的比较}     
+    \label{img02}   
+\end{figure}
+
+% =============================================
+% Part 3  读后感
+% =============================================
+\section{必读材料读后感}
+
+Todo: 请于课程最后一次提交报告之前在此处填写不少于500字的读后感
+
+% =============================================
+% Part 4 课程建议
+% =============================================
+\section{课程建议}
+
+Todo: 请给出课程建议
 
 \end{document}
