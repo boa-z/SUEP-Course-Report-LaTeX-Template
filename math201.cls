@@ -18,6 +18,7 @@
 \RequirePackage{indentfirst}
 \RequirePackage{zhnumber}
 \RequirePackage{booktabs}
+\RequirePackage{todonotes}
 
 
 
