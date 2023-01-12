@@ -8,6 +8,7 @@
 \RequirePackage{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{fancyhdr}
+\RequirePackage[most,minted]{tcolorbox}
 \RequirePackage{minted}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
