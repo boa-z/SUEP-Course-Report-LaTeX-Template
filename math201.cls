@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{math201}
 [2023/01/01 v0.1 Standard LaTeX Template for Math201 Report]
-\LoadClass[UTF8,a4paper]{ctexart}
+\LoadClass[UTF8,12pt,a4paper]{ctexart}
 \RequirePackage{xeCJK}
 \RequirePackage{CJKnumb}
 \RequirePackage{graphicx}
@@ -67,11 +67,11 @@
     \bfseries\Huge{《数值计算方法训练》}\\
     \vspace{0.5cm}
     \bfseries\huge{实习报告}
-    \vspace{2cm}
+    \vspace{1cm}
     \begin{center}
       \includegraphics[width=0.4\linewidth]{shiep-logo}
     \end{center}
-    \vspace{2cm}
+    \vspace{1cm}
     \begin{center}
 			\begin{large}
 				\begin{tabular}{rc}
@@ -86,7 +86,7 @@
 				\end{tabular}
 			\end{large}
 		\end{center}
-    \vspace{2cm}
+    \vspace{1.5cm}
     \Large{\@date}
   \end{center}
   \thispagestyle{empty}
