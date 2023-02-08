@@ -1,6 +1,9 @@
-# Math201 LaTeX Report
+# Math201 LaTeX Report 
 
 > The repo is forked from [Asterisci/XJTU-latex-report](https://github.com/Asterisci/XJTU-latex-report)
+
+
+**非常重要，请仔细阅读完本文以后再进行相关操作。（因未仔细阅读完本文，出现任何错误后果自负， 逃～～～逃～～～逃**
 
 ## 如何模板下载
 
@@ -24,7 +27,12 @@ xelatex --shell-escape main.tex
 ```
 这样你就可以顺利编译成功，得到代码高亮的main.pdf文件。
 
-如果你是使用VS Code，请参照Math201课程网站给出的VS Code的配置方式配置，如果你已经安装教程配置好，恭喜你你可以直接编译得到代码高亮的PDF文件。
+如果你是使用VS Code，请参照Math201课程网站安装VS Code 和 LaTeX Workshop 插件。恭喜！！！你可以使用快捷键`Ctrl+Alt+B（MacOS: Command + Option + B）`直接编译main.tex, 得到代码高亮的PDF文件。原因是我们已经在模板文件夹内提供了项目本地的 LaTeX Workshop 配置，无需你进行配置。项目的本地配置文件请见:
+
+```sh
+.vscode/settings.json
+```
+
 
 如果你是使用TeXstudio，则需要在
 
