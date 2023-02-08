@@ -1,8 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{math201}
-[2023/01/01 v0.1 Standard LaTeX Template for Math201 Report]
-\LoadClass[UTF8,12pt,a4paper]{ctexart}
-\RequirePackage{xeCJK}
+[2023/02/08 v0.2 Standard LaTeX Template for Math201 Report]
+\LoadClass[UTF8,a4paper]{ctexart}
 \RequirePackage{CJKnumb}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
@@ -22,15 +21,63 @@
 \RequirePackage{todonotes}
 
 
-
+% 行间距
 \linespread{1.25}
+
+% 字号汉化设置
+\newcommand{\初号}{\zihao {0}}
+\newcommand{\小初}{\zihao{-0}}
+\newcommand{\一号}{\zihao {1}}
+\newcommand{\小一}{\zihao{-1}}
+\newcommand{\二号}{\zihao {2}}
+\newcommand{\小二}{\zihao{-2}}
+\newcommand{\三号}{\zihao {3}}
+\newcommand{\小三}{\zihao{-3}}
+\newcommand{\四号}{\zihao {4}}
+\newcommand{\小四}{\zihao{-4}}
+\newcommand{\五号}{\zihao {5}}
+\newcommand{\小五}{\zihao{-5}}
+\newcommand{\六号}{\zihao {6}}
+\newcommand{\小六}{\zihao{-6}}
+\newcommand{\七号}{\zihao {7}}
+\newcommand{\八号}{\zihao {8}}
+% 字体汉化设置
+\xeCJKsetup{EmboldenFactor=3} % 伪粗体等级
+% 字体设置
+\renewcommand{\songti}{\CJKfontspec[Path=fonts/,FallBack=simsunb.ttf,AutoFakeBold]{simsun.ttc}}
+\setCJKmainfont[Path=fonts/,FallBack=simsunb.ttf,AutoFakeBold]{simsun.ttc} % 中文默认为宋体,小四在\documentclass处设置
+\newcommand{\宋体}{\songti}
+% 黑体
+\renewcommand{\heiti}{\CJKfontspec[Path=fonts/]{simhei.ttf}}
+\setCJKsansfont[Path=fonts/]{simhei.ttf}
+\newcommand{\黑体}{\heiti}
+% 其他
+\newcommand{\仿宋}{\fangsong}
+\newcommand{\楷书}{\kaishu}
+\newcommand{\隶书}{\lishu}
+\newcommand{\幼圆}{\youyuan}
+\newcommand{\雅黑}{\yahei}
+\newcommand{\苹方}{\pingfang}
+% 字体效果汉化设置
+\newcommand{\粗体}{\bfseries}
+\newcommand{\斜体}{\itshape}
+% 设置章节样式
+\ctexset{
+  % 需要使用ctexart文类，否则报错键不存在
+  section = {
+    format={\heiti\三号},
+  },
+  subsection = {
+    format={\heiti\四号},
+  },
+  subsubsection = {
+    format={\heiti\小四},
+  },
+}
 
 \renewcommand\thesection{\CJKnumber{\arabic{section}}、}
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand\thesubsubsection{(\arabic{subsubsection})}
-
-
-%\setCJKmainfont[ItalicFont={KaiTi_GB2312},BoldFont={SimHei}]{SimSun}
 
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
