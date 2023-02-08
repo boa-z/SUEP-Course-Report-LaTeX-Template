@@ -60,36 +60,56 @@
 % 字体效果汉化设置
 \newcommand{\粗体}{\bfseries}
 \newcommand{\斜体}{\itshape}
+
+
 % 设置章节样式
 \ctexset{
   % 需要使用ctexart文类，否则报错键不存在
   section = {
-    name={{},、},
-    number=\chinese{section},
-    % 黑体三号
-    format={\heiti\zihao{3}},
+    % format用于设置章节标题全局格式，作用域为标题和编号
+		% 字号为小三，字体为黑体，左对齐
+		% +号表示在原有格式下附加格式命令
+		format+ = \zihao{-3} \heiti \raggedright,
+		% name用于设置章节编号前后的词语
+		% 前、后词语用英文状态下,分开
+		% 如果没有前或后词语可以不填
+		name = {,、},
+		% number用于设置章节编号数字输出格式
+		% 输出section编号为中文
+		number = \chinese{section},
+		% beforeskip用于设置章节标题前的垂直间距
+		% ex为当前字号下字母x的高度
+		% 基础高度为1.0ex，可以伸展到1.2ex，也可以收缩到0.8ex
+		beforeskip = 1.0ex plus 0.2ex minus .2ex,
+		% afterskip用于设置章节标题后的垂直间距
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		% aftername用于控制编号和标题之间的格式
+		% \hspace用于增加水平间距
+		aftername = \hspace{0pt}
   },
   subsection = {
-    name={{},.},
-    number=\arabic{subsection},
+    name = {,.{ } },
+    number = \arabic{subsection},
     % 黑体四号
-    format={\heiti\zihao{4}},
+    format+ = \zihao{4} \heiti \raggedright,
+		beforeskip = 1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
   },
   subsubsection = {
-    number=\arabic{subsubsection},
+    number = \arabic{subsubsection},
     % 黑体小四
-    format={\heiti\zihao{-4}},
+    format+ = \zihao{-4} \heiti \raggedright,
+		beforeskip = 1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
   },
 }
 
-\titleformat*{\section}{\large\bfseries}
-\titleformat*{\subsection}{\normalsize\bfseries}
-\titleformat*{\subsubsection}{\normalsize}
+% 设置图片文件夹路径
 \graphicspath{{figures/}{figure/}{pictures/}%
 {picture/}{pic/}{pics/}{image/}{images/}}
 
-\titlespacing{\subsection}{1em}{*4}{*1.5}
-\titlespacing{\subsubsection}{1em}{*4}{*1.5}
 
 % 代码格式和颜色定义
 \usemintedstyle{emacs}
