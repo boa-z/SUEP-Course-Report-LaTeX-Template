@@ -2,7 +2,6 @@
 \ProvidesClass{math201}
 [2023/02/08 v0.2 Standard LaTeX Template for Math201 Report]
 \LoadClass[UTF8,a4paper]{ctexart}
-\RequirePackage{CJKnumb}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
 \RequirePackage{titlesec}
@@ -65,19 +64,23 @@
 \ctexset{
   % 需要使用ctexart文类，否则报错键不存在
   section = {
-    format={\heiti\三号},
+    name={{},、},
+    number=\chinese{section},
+    % 黑体三号
+    format={\heiti\zihao{3}},
   },
   subsection = {
-    format={\heiti\四号},
+    name={{},.},
+    number=\arabic{subsection},
+    % 黑体四号
+    format={\heiti\zihao{4}},
   },
   subsubsection = {
-    format={\heiti\小四},
+    number=\arabic{subsubsection},
+    % 黑体小四
+    format={\heiti\zihao{-4}},
   },
 }
-
-\renewcommand\thesection{\CJKnumber{\arabic{section}}、}
-\renewcommand\thesubsection{\arabic{subsection}.}
-\renewcommand\thesubsubsection{(\arabic{subsubsection})}
 
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
