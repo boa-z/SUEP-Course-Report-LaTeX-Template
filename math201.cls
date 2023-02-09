@@ -9,7 +9,7 @@
 \RequirePackage[most,minted]{tcolorbox}
 \RequirePackage{minted}
 \RequirePackage{amsmath}
-\RequirePackage{amssymb}
+\RequirePackage{unicode-math}
 \RequirePackage{mathtools}
 \RequirePackage{multirow}
 \RequirePackage{array}
@@ -19,6 +19,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{todonotes}
 
+\unimathsetup{math-style=ISO, bold-style=ISO}
 
 % 行间距
 \linespread{1.25}
