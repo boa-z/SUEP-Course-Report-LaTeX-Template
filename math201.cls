@@ -92,7 +92,7 @@
     name = {,.{ } },
     number = \arabic{subsection},
     % 黑体四号
-    format+ = \zihao{4} \heiti \raggedright,
+    format+ = \zihao{4} \songti \raggedright,
 		beforeskip = 1.0ex plus 0.2ex minus .2ex,
 		afterskip = 1.0ex plus 0.2ex minus .2ex,
 		aftername = \hspace{0pt}
@@ -100,7 +100,7 @@
   subsubsection = {
     number = \arabic{subsubsection},
     % 黑体小四
-    format+ = \zihao{-4} \heiti \raggedright,
+    format+ = \zihao{-4} \songti \raggedright,
 		beforeskip = 1.0ex plus 0.2ex minus .2ex,
 		afterskip = 1.0ex plus 0.2ex minus .2ex,
 		aftername = \hspace{0pt}
