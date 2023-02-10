@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{math201}
-[2023/02/08 v0.2 Standard LaTeX Template for Math201 Report]
+\ProvidesClass{math}
+[2023/02/08 v0.2 Standard LaTeX Template for math Report]
 \LoadClass[UTF8,a4paper]{ctexart}
 \RequirePackage{graphicx}
 \RequirePackage{geometry}
@@ -10,7 +10,6 @@
 \RequirePackage{minted}
 \RequirePackage{amsmath}
 \RequirePackage{unicode-math}
-\RequirePackage{mathtools}
 \RequirePackage{multirow}
 \RequirePackage{array}
 \RequirePackage{float}
@@ -19,48 +18,156 @@
 \RequirePackage{booktabs}
 \RequirePackage{todonotes}
 
+\geometry{a4paper,top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm}
+
 \unimathsetup{math-style=ISO, bold-style=ISO}
+
+% ==============================================================================
+% Options and Declarations
+% ==============================================================================
+\RequirePackage{kvdefinekeys}
+\RequirePackage{kvsetkeys}
+\RequirePackage{kvoptions}
+% ------------------------------------------------------------------------------
+%   Define \mathsetup command
+%
+%   Following key-value setup mechanism is adapted from `thuthesis'.
+%   thuthesis (https://github.com/xueruini/thuthesis) is licensed under the
+%   conditions of the LaTeX Project Public License, either version 1.3. 
+% ------------------------------------------------------------------------------
+\newcommand\mathsetup{%
+  \kvsetkeys{math}%
+}
+\newcommand\math@define@key[1]{%
+  \kvsetkeys{math@key}{#1}%
+}
+\kv@set@family@handler{math@key}{%
+  \@namedef{math@#1@@name}{#1}%
+  \def\math@@default{}%
+  \def\math@@choices{}%
+  \kv@define@key{math@value}{name}{%
+    \@namedef{math@#1@@name}{##1}%
+  }%
+  \kv@define@key{math@value}{code}{%
+    \@namedef{math@#1@@code}{##1}%
+  }%
+  \@namedef{math@#1@@check}{}%
+  \@namedef{math@#1@@code}{}%
+  \@namedef{math@#1@@hook}{%
+    \expandafter\ifx\csname\@currname.\@currext-h@@k\endcsname\relax
+      \@nameuse{math@#1@@code}%
+    \else
+      \AtEndOfClass{%
+        \@nameuse{math@#1@@code}%
+      }%
+    \fi
+  }%
+  \kv@define@key{math@value}{choices}{%
+    \def\math@@choices{##1}%
+    \@namedef{math@#1@@reset}{}%
+    \@namedef{math@#1@@check}{%
+      \@ifundefined{%
+        ifmath@\@nameuse{math@#1@@name}@\@nameuse{math@\@nameuse{math@#1@@name}}%
+      }{%
+        \math@error{Invalid value "#1 = \@nameuse{math@\@nameuse{math@#1@@name}}"}%
+      }%
+      \@nameuse{math@#1@@reset}%
+      \@nameuse{math@\@nameuse{math@#1@@name}@\@nameuse{math@\@nameuse{math@#1@@name}}true}%
+    }%
+  }%
+  \kv@define@key{math@value}{default}{%
+    \def\math@@default{##1}%
+  }%
+  \kvsetkeys{math@value}{#2}%
+  \@namedef{math@\@nameuse{math@#1@@name}}{}%
+  \kv@set@family@handler{math@choice}{%
+    \ifx\math@@default\@empty
+      \def\math@@default{##1}%
+    \fi
+    \expandafter\newif\csname ifmath@\@nameuse{math@#1@@name}@##1\endcsname
+    \expandafter\g@addto@macro\csname math@#1@@reset\endcsname{%
+      \@nameuse{math@\@nameuse{math@#1@@name}@##1false}%
+    }%
+  }%
+  \kvsetkeys@expandafter{math@choice}{\math@@choices}%
+  \expandafter\let\csname math@\@nameuse{math@#1@@name}\endcsname\math@@default
+  \expandafter\ifx\csname math@\@nameuse{math@#1@@name}\endcsname\@empty\else
+    \@nameuse{math@#1@@check}%
+    \@nameuse{math@#1@@hook}%
+  \fi
+  \kv@define@key{math}{#1}{%
+    \@namedef{math@\@nameuse{math@#1@@name}}{##1}%
+    \@nameuse{math@#1@@check}%
+    \@nameuse{math@#1@@hook}%
+  }%
+}
+
+\math@define@key{
+  title = {
+    default = {《数值计算方法训练》},
+  },
+  sub-title = {
+    default = {实习报告},
+    name = sub@title,
+  },
+  student = {
+    default = {张三}
+  },
+  student-id = {
+    default = {2022****},
+    name    = student@id,
+  },
+  institution = {
+    default = {数理学院数学系},
+  },
+  discipline = {
+    default = {信息与计算科学专业 2022 级},
+  },
+  date = {
+    default = {2023 年 2 月 8 日},
+  },
+}
 
 % 行间距
 \linespread{1.25}
 
 % 字号汉化设置
-\newcommand{\初号}{\zihao {0}}
-\newcommand{\小初}{\zihao{-0}}
-\newcommand{\一号}{\zihao {1}}
-\newcommand{\小一}{\zihao{-1}}
-\newcommand{\二号}{\zihao {2}}
-\newcommand{\小二}{\zihao{-2}}
-\newcommand{\三号}{\zihao {3}}
-\newcommand{\小三}{\zihao{-3}}
-\newcommand{\四号}{\zihao {4}}
-\newcommand{\小四}{\zihao{-4}}
-\newcommand{\五号}{\zihao {5}}
-\newcommand{\小五}{\zihao{-5}}
-\newcommand{\六号}{\zihao {6}}
-\newcommand{\小六}{\zihao{-6}}
-\newcommand{\七号}{\zihao {7}}
-\newcommand{\八号}{\zihao {8}}
+% \newcommand{\初号}{\zihao {0}}
+% \newcommand{\小初}{\zihao{-0}}
+% \newcommand{\一号}{\zihao {1}}
+% \newcommand{\小一}{\zihao{-1}}
+% \newcommand{\二号}{\zihao {2}}
+% \newcommand{\小二}{\zihao{-2}}
+% \newcommand{\三号}{\zihao {3}}
+% \newcommand{\小三}{\zihao{-3}}
+% \newcommand{\四号}{\zihao {4}}
+% \newcommand{\小四}{\zihao{-4}}
+% \newcommand{\五号}{\zihao {5}}
+% \newcommand{\小五}{\zihao{-5}}
+% \newcommand{\六号}{\zihao {6}}
+% \newcommand{\小六}{\zihao{-6}}
+% \newcommand{\七号}{\zihao {7}}
+% \newcommand{\八号}{\zihao {8}}
 % 字体汉化设置
-\xeCJKsetup{EmboldenFactor=3} % 伪粗体等级
+\xeCJKsetup{EmboldenFactor=2.5} % 伪粗体等级
 % 字体设置
 \renewcommand{\songti}{\CJKfontspec[Path=fonts/,FallBack=simsunb.ttf,AutoFakeBold]{simsun.ttc}}
 \setCJKmainfont[Path=fonts/,FallBack=simsunb.ttf,AutoFakeBold]{simsun.ttc} % 中文默认为宋体,小四在\documentclass处设置
-\newcommand{\宋体}{\songti}
+% \newcommand{\宋体}{\songti}
 % 黑体
-\renewcommand{\heiti}{\CJKfontspec[Path=fonts/]{simhei.ttf}}
+\renewcommand{\heiti}{\CJKfontspec[Path=fonts/,AutoFakeBold]{simhei.ttf}}
 \setCJKsansfont[Path=fonts/]{simhei.ttf}
-\newcommand{\黑体}{\heiti}
-% 其他
-\newcommand{\仿宋}{\fangsong}
-\newcommand{\楷书}{\kaishu}
-\newcommand{\隶书}{\lishu}
-\newcommand{\幼圆}{\youyuan}
-\newcommand{\雅黑}{\yahei}
-\newcommand{\苹方}{\pingfang}
-% 字体效果汉化设置
-\newcommand{\粗体}{\bfseries}
-\newcommand{\斜体}{\itshape}
+% \newcommand{\黑体}{\heiti}
+% % 其他
+% \newcommand{\仿宋}{\fangsong}
+% \newcommand{\楷书}{\kaishu}
+% \newcommand{\隶书}{\lishu}
+% \newcommand{\幼圆}{\youyuan}
+% \newcommand{\雅黑}{\yahei}
+% \newcommand{\苹方}{\pingfang}
+% % 字体效果汉化设置
+% \newcommand{\粗体}{\bfseries}
+% \newcommand{\斜体}{\itshape}
 
 
 % 设置章节样式
@@ -116,49 +223,43 @@
 \usemintedstyle{emacs}
 
 
-% 信息
-\newcommand\major[1]{\def\@major{#1}}
-\newcommand\name[1]{\def\@name{#1}}
-\newcommand\stuid[1]{\def\@stuid{#1}}
-\newcommand\college[1]{\def\@college{#1}}
-\renewcommand\date[1]{\def\@date{#1}}
-
-
 % 页眉
 \pagestyle{fancy}
 \lhead{课程名称：数值计算方法训练}
-\chead{姓名：\@name}
-\rhead{学号：\@stuid}
+\chead{姓名：\math@student}
+\rhead{学号：\math@student@id}
+\setlength{\headheight}{13pt}
 
 
 % 封面
 \newcommand{\makecover}{
   \begin{center}
     \heiti
-    \bfseries\Huge{《数值计算方法训练》}\\
-    \vspace{0.5cm}
-    \bfseries\huge{实习报告}
-    \vspace{1cm}
+    \bfseries\zihao{-0}{\math@title}\\
+    \vskip 30pt
+    \bfseries\songti\zihao{1}{\math@sub@title} \\
+    \vskip 60pt
     \begin{center}
       \includegraphics[width=0.4\linewidth]{shiep-logo}
     \end{center}
-    \vspace{1cm}
+	\vskip 60pt
     \begin{center}
-			\begin{large}
-				\begin{tabular}{rc}
-          \LARGE{院\qquad 系：}& \Large{\@college}\\
-					\cline{2-2}\\
-          \LARGE{专业年级：}& \Large{\@major}\\
-					\cline{2-2}\\
-					\LARGE{姓\qquad 名：}& \Large{\@name}\\
-					\cline{2-2}\\
-					\LARGE{学\qquad 号：}&\hspace{2.5cm} \Large {\@stuid} \hspace{2.5cm} \\
-					\cline{2-2}
-				\end{tabular}
-			\end{large}
-		\end{center}
-    \vspace{1.5cm}
-    \Large{\@date}
+		\begin{large}
+			\zihao{-3}
+			\begin{tabular}{rc}
+				院\qquad 系：& \math@institution\\
+						\cline{2-2}\\
+				专业年级：& \math@discipline\\
+				\cline{2-2}\\
+				姓\qquad 名：& \math@student\\
+				\cline{2-2}\\
+				学\qquad 号：&\hspace{2.5cm} \math@student@id \hspace{2.5cm} \\
+				\cline{2-2}
+			\end{tabular}
+		\end{large}
+	\end{center}
+    \vskip 60pt
+    \zihao{4}{\math@date}
   \end{center}
   \thispagestyle{empty}
   \newpage
