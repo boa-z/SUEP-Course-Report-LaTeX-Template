@@ -1,4 +1,4 @@
-# Math201 LaTeX Report 
+# 《数值计算方法训练》课程报告模板
 
 > The repo is forked from [Asterisci/XJTU-latex-report](https://github.com/Asterisci/XJTU-latex-report)
 
