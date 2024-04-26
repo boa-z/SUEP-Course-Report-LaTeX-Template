@@ -172,6 +172,9 @@
 % 黑体
 \renewcommand{\heiti}{\CJKfontspec[Path=fonts/,AutoFakeBold]{simhei.ttf}}
 \setCJKsansfont[Path=fonts/]{simhei.ttf}
+
+\newcommand{\kaiti}{\CJKfontspec[Path=fonts/,AutoFakeBold]{kaiti.ttf}}
+\renewcommand{\fangsong}{\CJKfontspec[Path=fonts/,AutoFakeBold]{fangsong.ttf}}
 % \newcommand{\黑体}{\heiti}
 % % 其他
 % \newcommand{\仿宋}{\fangsong}
