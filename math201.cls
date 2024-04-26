@@ -239,7 +239,7 @@
 % 页眉
 \pagestyle{fancy}
 \lhead{课程名称：数值计算方法训练}
-\chead{姓名：\math@student}
+\chead{姓名：\math@student@name}
 \rhead{学号：\math@student@id}
 \setlength{\headheight}{13pt}
 
