@@ -1,0 +1,80 @@
+% 修改此处以选择使用的模板
+\documentclass{course-thesis/theme-2639012-final}
+
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{minted}
+
+% Build: xelatex --shell-escape course-thesis/theme-2639012-final-example
+
+% =============================================
+% Part 0 信息
+% =============================================
+
+\mathsetup{
+  % 学院
+  institution = {电子与信息工程学院},
+  % 专业
+  discipline = {集成电路设计与集成系统},
+  % 课程编号
+  course-number = {2639012.01},
+  % 学生姓名
+  student-name = {某同学},
+  % 学号
+  student-id = {2021****},
+  % 班级
+  student-class = {集成21391},
+  % 指导老师
+  teacher = {杨程},
+  % 日期——年
+  year = {2024},
+  % 日期——月
+  month = {4},
+  % 日期——日
+  day= {30},
+}
+
+\begin{document}
+
+% =============================================
+% Part 1  封面
+% =============================================
+
+\makecover
+
+% =============================================
+% Part 2 主文档
+% =============================================
+
+\section{课程设计目的}
+
+\section{课程设计任务一（15.1.4）}
+
+\subsection{实验目的与内容}
+
+\subsection{实验步骤}
+
+% 2.1 对照 /projet_soc/TP/TP0 和/projet_soc/TP/TP0_CORRECTION 里面的如下个文件，并将 /projet_soc/TP/TP0 中的这6个文件中与 /projet_soc/TP/TP0_CORRECTION 中的这个6个文件不同的地方改成跟/projet_soc/TP/TP0_CORRECTION中的这6个文件相同的形式：
+% /projet_soc/TP/TP0/HW/里面的个文件：
+% 2.2 更新top.cpp中的部分代码
+% 2.3 segmentation.h
+% 2.4 platform_desc
+% /projet_soc/TP/TP0/SW/mjpeg_seq/headers/里面的个文件：
+% 1. fetch.h 改目录：
+% movie=fopen("/fd/home/vlsi/projet_soc/TP/TP0/SW/mjpeg_seq/images/ice_age256x144_144.mjpeg","r")
+% /projet_soc/TP/TP0/SW/mjpeg_seq/ldscripts/里面的个文件：
+% 1. mips
+% /projet_soc/TP/TP0/SW/mjpeg_seq/sources/里面的个文件：
+% 1. dispatch.c
+% 编译仿真：268页（3）编译仿真步骤1-5.
+
+\subsection{实验过程}
+
+\section{课程设计任务二（15.1.5）}
+
+\section{课程设计总结}
+
+% 请删除\todo部分，并开始编写你的总结
+\todo[inline,color=blue!20]{需包含与书中1-14章（主要是第4章）相关的内容之间的联系，根据自己的理解来写即可。）}
+
+\end{document}

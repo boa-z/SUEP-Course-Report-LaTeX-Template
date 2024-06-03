@@ -1,0 +1,72 @@
+\documentclass{course-thesis/theme-2614084}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{minted}
+
+\usepackage{hyperref}
+
+% Build: xelatex --shell-escape course-thesis/theme-2614084-example.tex
+
+% =============================================
+% Part 0 信息
+% =============================================
+
+\mathsetup{
+  % 学生姓名
+  student-name = {},
+  % 学号
+  student-id = {},
+  % 院系
+  department = {电子与信息工程学院},
+  % 专业
+  experiment = {实验4 CMOS与非门版图设计},
+  % 专业年级
+  major = {集成电路设计与集成系统},
+  % 日期
+  % date = {\today},
+}
+
+\begin{document}
+
+% =============================================
+% Part 1  封面
+% =============================================
+
+\makecover
+
+% =============================================
+% Part 2 主文档
+% =============================================
+
+\section{实验目的}
+
+\begin{enumerate}
+  \item 熟悉 virtuoso editing 设计窗口及操作，熟悉 LSW 窗口
+  \item 理解设计库、技术库
+  \item 了解 SMIC0.18um 工艺规则
+  \item 认识 DRC 设计规则检查，排除错误
+\end{enumerate}
+
+\section{实验环境}
+
+\begin{enumerate}
+  \item 硬件: PC 机、服务器
+  \item 环境：Unix 操作系统、Cadence Virtuoso Editing 版图设计软件
+\end{enumerate}
+
+\section{实验内容与步骤}
+
+% （注：按照内容，有截图和说明）
+
+\subsection{实验内容}
+
+\begin{enumerate}
+  \item 按照设计规则进行CMOS与非门的版图设计。
+  \item 进行CMOS与非门的DRC、LVS检查，生成GDS 文件。
+\end{enumerate}
+
+\subsection{实验步骤}
+
+\section{实验总结和感悟}
+
+\end{document}
