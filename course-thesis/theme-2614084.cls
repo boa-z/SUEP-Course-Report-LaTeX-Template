@@ -119,7 +119,7 @@
     name    = student@name,
   },
   student-id = {
-    default = {20211991},
+    default = {2021xxxx},
     name    = student@id,
   },
   experiment = {
@@ -243,7 +243,7 @@
 % 页眉
 \pagestyle{fancy}
 \lhead{课程：CMOS集成电路原理与设计}
-\chead{姓名：\math@student}
+\chead{姓名：\math@student@name}
 \rhead{学号：\math@student@id}
 \setlength{\headheight}{13pt}
 
@@ -261,9 +261,9 @@
     \songti\zihao{1}{\math@kind} \\
     \vskip 60pt
     \begin{center}
-      \includegraphics[width=0.4\linewidth]{shiep-logo}
+      \includegraphics[width=0.4\linewidth]{shiep-logo-2}
     \end{center}
-	\vskip 60pt
+	\vskip 50pt
     \begin{center}
 		\begin{large}
 			\zihao{-3}
@@ -273,7 +273,7 @@
 				姓\qquad 名：& \math@student@name\\
 				  \cline{2-2}\\
         学\qquad 号：&\hspace{2.5cm} \math@student@id \hspace{2.5cm} \\
-				  \cline{2-2}
+          \cline{2-2}\\
         专\qquad 业：& \math@major\\
 				  \cline{2-2}\\
         教\qquad 师：& \math@teacher\\

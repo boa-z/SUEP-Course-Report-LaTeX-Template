@@ -110,8 +110,9 @@
     default = {嵌入式系统设计应用},
     name = sub@title,
   },
-  student = {
-    default = {}
+  student-name = {
+    default = {某同学},
+    name    = student@name,
   },
   student-id = {
     default = {2021xxxx},
@@ -227,7 +228,7 @@
 % 页眉
 \pagestyle{fancy}
 \lhead{课程名称：嵌入式系统及应用}
-\chead{姓名：\math@student}
+\chead{姓名：\math@student@name}
 \rhead{学号：\math@student@id}
 \setlength{\headheight}{13pt}
 
@@ -252,7 +253,7 @@
 						\cline{2-2}\\
 				专业班级：& \math@discipline\\
 				\cline{2-2}\\
-				姓\qquad 名：& \math@student\\
+				姓\qquad 名：& \math@student@name\\
 				\cline{2-2}\\
 				学\qquad 号：&\hspace{2.5cm} \math@student@id \hspace{2.5cm} \\
 				\cline{2-2}
